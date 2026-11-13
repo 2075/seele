@@ -3,6 +3,6 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 SUDO=""; [ "$(id -u)" -eq 0 ] || SUDO="sudo"
-$SUDO systemctl stop seele.service
-trap '$SUDO systemctl start seele.service; echo "seele restarted"' EXIT
+$SUDO systemctl stop seele-rgb.service
+trap '$SUDO systemctl start seele-rgb.service; echo "seele restarted"' EXIT
 .venv/bin/seele identify --hold "${HOLD:-5}"

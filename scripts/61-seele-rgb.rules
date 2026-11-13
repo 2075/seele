@@ -1,6 +1,0 @@
-# seele: allow plugdev to drive RGB controllers without a local seat (OpenRGB rules use uaccess only)
-# logind uaccess rewrites the ACL (group::---), so also add an explicit plugdev ACL entry.
-SUBSYSTEMS=="usb|hidraw", ATTRS{idVendor}=="0b05", ATTRS{idProduct}=="18f3", MODE="0660", GROUP="plugdev", RUN+="/usr/bin/setfacl -m g:plugdev:rw $env{DEVNAME}"
-SUBSYSTEMS=="usb|hidraw", ATTRS{idVendor}=="1e71", ATTRS{idProduct}=="2006", MODE="0660", GROUP="plugdev", RUN+="/usr/bin/setfacl -m g:plugdev:rw $env{DEVNAME}"
-SUBSYSTEMS=="usb|hidraw", ATTRS{idVendor}=="1e71", ATTRS{idProduct}=="2007", MODE="0660", GROUP="plugdev", RUN+="/usr/bin/setfacl -m g:plugdev:rw $env{DEVNAME}"
-SUBSYSTEMS=="usb|hidraw", ATTRS{idVendor}=="1532", ATTRS{idProduct}=="0098", MODE="0660", GROUP="plugdev", RUN+="/usr/bin/setfacl -m g:plugdev:rw $env{DEVNAME}"

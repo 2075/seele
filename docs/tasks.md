@@ -22,7 +22,7 @@
 
 - [x] Design freeze declared 2026-11-13 (remote signals unverified live)
 - [x] Rust port implemented: parity exact, 26 tests + 7 live, clippy clean (2026-11-13)
-- [ ] Cut over: `scripts/install-services.sh` (unit now runs rust/target/release/seele), verify lights + /state
+- [x] Cut over to Rust (2026-11-13)
 - [ ] Verify spend_today/tok_remote on Rust once gw-open has an upstream key
 - [ ] Retire Python tree after a week on Rust (keep tests/parity + golden)
 
@@ -30,6 +30,6 @@
 
 - [x] 2026-11-12: Scaffold the agent-skills config (AGENTS.md, docs/agents/)
 - [x] Rust: retry OpenRGB connect for 30 s at startup (boot race seen 2026-11-13 09:07)
-- [ ] Run real `seele-rgb install` (ADR 0003), verify ALL OK + lights, then retire scripts/install-services.sh, setup-*.sh, deploy/
+- [x] `seele-rgb install` verified ALL OK; old scripts and deploy/ removed (2026-11-13)
 - [x] Dual license MIT OR Apache-2.0, author 2075, git init (2026-11-13)
 - [ ] GitHub remote (gh re-auth needed), then repository URL in Cargo.toml, migrate tasks to issues, cargo publish

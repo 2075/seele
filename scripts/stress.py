@@ -58,12 +58,12 @@ async def flood(stop: asyncio.Event, rps: int, counts: dict):
 
 async def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--seele-pid", type=int, help="default: auto-detect the python process running seele")
+    ap.add_argument("--seele-pid", type=int, help="default: auto-detect from seele-rgb.service")
     ap.add_argument("--scale", type=float, default=1.0, help="multiply phase durations")
     a = ap.parse_args()
     def find_pid():
         import subprocess
-        out = subprocess.run(["systemctl", "show", "seele", "-p", "MainPID", "--value"], capture_output=True, text=True).stdout.strip()
+        out = subprocess.run(["systemctl", "show", "seele-rgb", "-p", "MainPID", "--value"], capture_output=True, text=True).stdout.strip()
         if out and out != "0":
             return int(out)
         return next((p.pid for p in psutil.process_iter(["cmdline"])
