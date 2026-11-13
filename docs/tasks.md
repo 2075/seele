@@ -1,7 +1,5 @@
 # Tasks
 
-## Open
-
 - [x] Exercise tok_local via gateway key (seele-stress, local-small)
 - [x] Outage drill + visual check of amber/red (2026-11-13)
 - [x] Quiet hours dim outage/degraded too (user decision 2026-11-13, revisit if alerts get missed)
