@@ -1,0 +1,68 @@
+# seele config. Devices are matched by name substring and zones by exact name.
+[openrgb]
+host = "127.0.0.1"
+port = 6742
+
+[render]
+fps = 20
+brightness = 0.8          # global 0..1
+# preview = "traffic"   # force "ok" | "degraded" | "outage" | "traffic" (hot-reloads); comment out for live
+quiet = "23:00-07:00"     # dim to 15% in this window (remove to disable)
+
+# ── Look: tuned by eye, hot-reloads within 2 s ──
+# Colours are "#rrggbb". Tip: preview = "traffic" fakes requests so you can watch the pulses.
+[palette]
+ramp = [[0.0, "#0028ff"], [0.35, "#00c8a0"], [0.7, "#ff9600"], [1.0, "#ff0000"]]  # load → colour
+local  = "#00ff96"    # local-tier pulses, fans tint, GPU "generating"
+remote = "#aa00ff"    # remote-tier pulses, fans tint, spend fill
+error  = "#ff0000"    # error pulses, alert flash, outage
+amber  = "#ff7800"    # degraded
+
+[pulses]
+pulse_seconds   = 0.9    # time to cross the strip (higher = slower)
+pulse_width     = 1.0    # LEDs for a quick request
+pulse_width_max = 4.0    # LEDs for a slow request (>= pulse_slow_ms)
+pulse_slow_ms   = 6000
+pulse_max       = 24     # pulses alive at once
+strip_base      = 0.55   # strip background brightness under the pulses
+breathe_depth   = 0.25   # 0 = steady, 0.5 = deep breathing
+breathe_speed   = 0.6    # breathing rate at idle (faster with load)
+demo_rps        = 2.0    # fake requests/s when preview = "traffic"
+
+[collectors]
+enabled = ["docker", "traefik", "ollama", "litellm", "gateway"]
+
+[collectors.litellm]
+budget_eur_day = 5
+
+# Each zone gets a role, and the scene decides what each role shows.
+# Roles: cpu, gpu, ambient (blended load), strip (later: traffic), fans
+[[zone]]
+device = "RTX 3070"
+zone = "Unknown"
+role = "gpu"
+
+[[zone]]
+device = "X570-E"
+zone = "Aura Mainboard"
+role = "cpu"
+
+[[zone]]
+device = "Kraken"
+zone = "Hue 2 Channel 2"   # pump ring (8)
+role = "cpu"
+
+[[zone]]
+device = "Kraken"
+zone = "Hue 2 Channel 3"   # logo (1)
+role = "ambient"
+
+[[zone]]
+device = "Smart Device"
+zone = "Hue 2 Channel 1"   # 16 LEDs: case fans (identified 2026-11-12)
+role = "fans"
+
+[[zone]]
+device = "Smart Device"
+zone = "Hue 2 Channel 2"   # 10 LEDs: case LED strip (identified 2026-11-12)
+role = "strip"

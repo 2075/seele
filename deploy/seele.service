@@ -1,0 +1,16 @@
+[Unit]
+Description=seele: machine state through OpenRGB lighting
+After=openrgb-server.service docker.service
+Requires=openrgb-server.service
+
+[Service]
+User=zero
+SupplementaryGroups=docker
+WorkingDirectory=/home/zero/workspace/seele
+# Rust build (ADR 0002). Rollback to Python: ExecStart=/home/zero/workspace/seele/.venv/bin/seele run
+ExecStart=/home/zero/workspace/seele/rust/target/release/seele run
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

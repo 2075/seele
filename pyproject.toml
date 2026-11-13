@@ -1,0 +1,16 @@
+[project]
+name = "seele"
+version = "0.1.0"
+description = "Machine-state monitor rendered through OpenRGB lighting"
+requires-python = ">=3.11"
+dependencies = ["openrgb-python>=0.3", "psutil>=6", "nvidia-ml-py>=12", "httpx>=0.27"]
+
+[project.scripts]
+seele = "seele.__main__:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["seele*"]

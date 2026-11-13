@@ -1,0 +1,14 @@
+[Unit]
+Description=OpenRGB SDK server (for seele)
+After=systemd-udev-settle.service
+Wants=systemd-udev-settle.service
+
+[Service]
+User=zero
+SupplementaryGroups=i2c plugdev
+ExecStart=/usr/bin/openrgb --server --server-host 127.0.0.1 --server-port 6742
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

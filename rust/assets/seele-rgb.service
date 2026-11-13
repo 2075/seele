@@ -1,0 +1,13 @@
+[Unit]
+Description=seele-rgb: machine state through OpenRGB lighting
+After=openrgb-server.service docker.service
+Requires=openrgb-server.service
+
+[Service]
+User={USER}
+{GROUPS_LINE}ExecStart={EXE} run
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
