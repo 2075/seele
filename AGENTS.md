@@ -4,7 +4,7 @@
 
 ### Issue tracker
 
-Issues live as local markdown files under `.scratch/<feature>/` (no git remote yet). See `docs/agents/issue-tracker.md`.
+Issues live in GitHub Issues at 2075/seele (`gh issue ...`). See `docs/agents/issue-tracker.md`.
 
 ### Domain docs
 
