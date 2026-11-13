@@ -31,4 +31,5 @@
 - [x] 2026-11-12: Scaffold the agent-skills config (AGENTS.md, docs/agents/)
 - [x] Rust: retry OpenRGB connect for 30 s at startup (boot race seen 2026-11-13 09:07)
 - [ ] Run real `seele-rgb install` (ADR 0003), verify ALL OK + lights, then retire scripts/install-services.sh, setup-*.sh, deploy/
-- [ ] Decide: LICENSE file, repository URL, crates.io publish
+- [x] Dual license MIT OR Apache-2.0, author 2075, git init (2026-11-13)
+- [ ] GitHub remote (gh re-auth needed), then repository URL in Cargo.toml, migrate tasks to issues, cargo publish
